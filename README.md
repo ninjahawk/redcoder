@@ -1,19 +1,44 @@
+<div align="center">
+
+<pre>
+   ____   _____  ____    ____   ___   ____   _____  ____
+  |  _ \ | ____||  _ \  / ___| / _ \ |  _ \ | ____||  _ \
+  | |_) ||  _|  | | | || |    | | | || | | ||  _|  | |_) |
+  |  _ &lt; | |___ | |_| || |___ | |_| || |_| || |___ |  _ &lt;
+  |_| \_\|_____||____/  \____| \___/ |____/ |_____||_| \_\
+</pre>
+
 # Redcoder
 
-An **offline, local AI coding agent** for your own machine — a Claude-Code-style terminal
-agent driven entirely by a local model through [Ollama](https://ollama.com). It reads,
-writes, and edits files, runs shell commands, and works through multi-step tasks — all on
-your box, with **nothing logged to disk**. Ships with two front ends that share the same
-local model:
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://python.org)
+[![Ollama](https://img.shields.io/badge/Ollama-local_models-000000?logo=ollama&logoColor=white)](https://ollama.com)
+[![Offline](https://img.shields.io/badge/100%25-offline-2ea44f)](#privacy)
+[![No Logging](https://img.shields.io/badge/logging-none-red)](#privacy)
+[![Voice](https://img.shields.io/badge/voice-Whisper-11557c?logo=openai&logoColor=white)](#voice)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+**An offline, local AI coding agent &nbsp;|&nbsp; Claude-Code-style, driven by your own model**
+
+A terminal coding agent that reads, writes, and edits files and runs commands on your box —
+driven entirely by a local *abliterated* model through [Ollama](https://ollama.com). Fully
+offline, nothing logged, with live diff streaming, a model switcher, and hold-Space voice.
+
+[**▶ Quick Start**](#setup) &nbsp;·&nbsp; [**⌨ Usage**](#usage) &nbsp;·&nbsp; [**🎤 Voice**](#voice) &nbsp;·&nbsp; [**🔒 Privacy**](#privacy)
+
+</div>
+
+---
+
+Redcoder ships with two front ends that share the same local model:
 
 | Front end | What it is | Launch |
 |---|---|---|
 | **CLI agent** | A terminal coding agent with live tool streaming, a model switcher, and optional voice input. | `redcoder` |
 | **Web chat** | A clean browser chat UI (conversation only, no tools). | `Start Redcoder Web.cmd` |
 
-Redcoder is designed for local software work and **authorized** security-lab use on your
-own machine and your own isolated VMs. It's self-contained: the CLI is pure Python standard
-library (no pip installs), talks only to `127.0.0.1`, and works with the network off.
+It's designed for local software work and **authorized** security-lab use on your own machine
+and your own isolated VMs. The CLI is pure Python standard library (no pip installs), talks only
+to `127.0.0.1`, and works with the network off.
 
 ---
 
@@ -99,6 +124,15 @@ questions directly. It's a copilot, not an oracle — verify its commands.
 
 Rebuild or retune anytime with `ollama create redcoder -f config/Modelfile.redcoder`.
 On a bigger GPU, swap the `FROM` line for a larger abliterated build.
+
+---
+
+## Voice
+
+If a mic, **ffmpeg**, and **Whisper** are present, hold **Space at an empty prompt** to
+talk; release to transcribe **offline on your GPU** and submit. You'll see `▸ heard: …`
+so you know what it caught, and the recording is deleted immediately after transcription.
+Disable with `--no-voice`.
 
 ---
 
